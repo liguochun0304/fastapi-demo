@@ -1,0 +1,14 @@
+# --- Web 框架 ---
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# --- 配置管理 ---
+pydantic>=2.8.0
+pydantic-settings>=2.4.0
+
+# --- 部署运行 ---
+uwsgi>=2.0.23
+supervisor>=4.2.5
+
+# --- 其他工具 ---
+werkzeug>=3.0.0  # 你的异常类里用到了 werkzeug.exceptions

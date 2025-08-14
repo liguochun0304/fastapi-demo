@@ -1,0 +1,22 @@
+version: "1"
+services:
+  iextract-service-server:
+    image: iextract-service:0.0.0
+    container_name: iextract-service-server
+
+    privileged: true
+    restart: always
+
+    environment:
+      - PROCESSES=12
+      - HTTP_TIMEOUT=600
+      - MODELS_DIR=/work/weights
+    ports:
+      - "9000:8000"
+
+    volumes:
+      - "./:/work"
+      - "../iextract-service-data:/data/data"
+      - "../iextract-service-logs:/data/log"
+      - "./weights:/work/weights"        # ← 挂载到容器内 /work/weights
+    command: ["supervisord", "-n", "-c", "/etc/supervisord.conf"]
